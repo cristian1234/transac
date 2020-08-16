@@ -46,7 +46,7 @@ public class AccountController {
 
 	private final long UNIQUE_USER_ID = 1L;
 
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
 	@RequestMapping(method = RequestMethod.GET, path = "/", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<Account> getCurrentAccountBalance() {
 		Account account = accountRepository.findById(UNIQUE_USER_ID).get();
